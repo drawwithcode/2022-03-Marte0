@@ -12,6 +12,7 @@ let pose;
 let mug;
 
 let mugSize;
+let textalpha = 255;
 
 function preload() {
   mug = loadImage("assets/cup.png");
@@ -45,8 +46,6 @@ function setup() {
 }
 
 function draw() {
-  background(255);
-
   push();
   scale(-1, 1), 1;
   translate(-width, 0);
@@ -57,6 +56,15 @@ function draw() {
 
   image(mug, mugPos.x - mug.width + 50 * mugSize, mugPos.y - mug.height / 2);
   pop();
+
+  fill(255, 255, 255, (textalpha -= 0.5));
+  textSize(32);
+  textAlign(CENTER);
+  text(
+    "use two fingers to pinch the mug and enjoy your coffe",
+    windowWidth / 2,
+    windowHeight / 2
+  );
 
   if (handsfree.data.hands) {
     // let right = handsfree.data.hands.landmarksVisible[1];
